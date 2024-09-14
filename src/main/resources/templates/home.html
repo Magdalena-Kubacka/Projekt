@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pl">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Sklep</title>
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+</head>
+<body class="surroundings">
+
+<header th:replace="fragments/header :: ShopHeader"></header>
+<!--<header>-->
+<!--  <span class="title">Sklep z roślinami</span>-->
+
+<!--  <a href="" class="card-ico">-->
+<!--    <div class="cart-ico">-->
+<!--      <span>Koszyk</span>-->
+<!--      <span>(0)</span>-->
+<!--      <span>0</span>-->
+<!--      <span>zł</span>-->
+<!--    </div>-->
+<!--  </a>-->
+<!--</header>-->
+
+  <div class="item" th:each="item : ${items}">
+    <p class="item-name" th:text="${item.name}">Drzewko bonsai</p>
+    <img class="item-img" th:src="@{${item.imgUrl}}"
+         src="https://swiat-bonsai.pl/118845-home_default/sosna-drobnokwiatowa.jpg">
+    <div>
+      <span>Cena: </span>
+      <span th:text="${item.price}">60</span>
+      <span>zł</span>
+    </div>
+
+
+    <a th:href="@{'/add/' + ${item.id}}" class="add-btn">Dodaj do koszyka</a>
+  </div>
+
+
+</body>
+</html>
